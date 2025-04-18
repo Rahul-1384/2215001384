@@ -4,7 +4,6 @@ import TopUsers from './components/TopUsers';
 import TrendingPosts from './components/TrendingPosts';
 import Feed from './components/Feed';
 
-// Change to relative URL path when using proxy
 const API_PATH = 'http://20.244.56.144/evaluation-service';
 
 const CLIENT_ID = '2aeb34f5-8bdf-4b92-b3d4-56aa724ba76f';
@@ -115,7 +114,6 @@ const App = () => {
             
             allPosts.push(...postsWithUserInfo);
             
-            // Fetch comments for each post in parallel
             const commentPromises = postsData.posts.map(post => 
               fetchComments(post.id, currentToken)
             );
@@ -123,7 +121,6 @@ const App = () => {
           }
         } catch (err) {
           console.error(`Error fetching posts for user ${userId}:`, err);
-          // Continue with other users even if one fails
         }
       }
       
